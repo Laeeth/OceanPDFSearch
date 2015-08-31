@@ -4,6 +4,9 @@
     <Profile Name="(Default)" />
   </Profiles>
   <Settings>
+    <Setting Name="History" Type="System.Collections.Specialized.StringCollection" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
     <Setting Name="PDFViewer" Type="System.String" Scope="User" Roaming="false">
       <Value Profile="(Default)" />
     </Setting>

@@ -16,12 +16,14 @@ namespace OceanPDFSearch
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Button buttonSearch;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox textBoxSearchFor;
 		private System.Windows.Forms.ListBox listBoxResults;
 		private System.Windows.Forms.Button buttonIndex;
 		private System.Windows.Forms.Panel panelTarget;
 		private System.Windows.Forms.SplitContainer splitContainer1;
 		private System.Windows.Forms.Button buttonSelectPDFViewer;
+		private System.Windows.Forms.Button buttonClearHistory;
+		private System.Windows.Forms.Button buttonWebsite;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -46,12 +48,14 @@ namespace OceanPDFSearch
 		{
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonSearch = new System.Windows.Forms.Button();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.textBoxSearchFor = new System.Windows.Forms.TextBox();
 			this.buttonIndex = new System.Windows.Forms.Button();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.listBoxResults = new System.Windows.Forms.ListBox();
 			this.panelTarget = new System.Windows.Forms.Panel();
 			this.buttonSelectPDFViewer = new System.Windows.Forms.Button();
+			this.buttonClearHistory = new System.Windows.Forms.Button();
+			this.buttonWebsite = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -61,16 +65,19 @@ namespace OceanPDFSearch
 			// 
 			// tableLayoutPanel1
 			// 
-			this.tableLayoutPanel1.ColumnCount = 4;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
-			this.tableLayoutPanel1.Controls.Add(this.buttonSearch, 3, 0);
-			this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 0);
+			this.tableLayoutPanel1.ColumnCount = 5;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+			this.tableLayoutPanel1.Controls.Add(this.buttonSearch, 4, 0);
+			this.tableLayoutPanel1.Controls.Add(this.textBoxSearchFor, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.buttonIndex, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.buttonSelectPDFViewer, 1, 2);
+			this.tableLayoutPanel1.Controls.Add(this.buttonClearHistory, 2, 2);
+			this.tableLayoutPanel1.Controls.Add(this.buttonWebsite, 4, 2);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -84,31 +91,31 @@ namespace OceanPDFSearch
 			// buttonSearch
 			// 
 			this.buttonSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.buttonSearch.Location = new System.Drawing.Point(788, 3);
+			this.buttonSearch.Location = new System.Drawing.Point(787, 3);
 			this.buttonSearch.Name = "buttonSearch";
-			this.buttonSearch.Size = new System.Drawing.Size(82, 29);
+			this.buttonSearch.Size = new System.Drawing.Size(83, 29);
 			this.buttonSearch.TabIndex = 0;
 			this.buttonSearch.Text = "Search";
 			this.buttonSearch.UseVisualStyleBackColor = true;
 			this.buttonSearch.Click += new System.EventHandler(this.ButtonSearchClick);
 			// 
-			// textBox1
+			// textBoxSearchFor
 			// 
-			this.tableLayoutPanel1.SetColumnSpan(this.textBox1, 3);
-			this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBox1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox1.Location = new System.Drawing.Point(3, 3);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(779, 29);
-			this.textBox1.TabIndex = 1;
-			this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox1KeyUp);
+			this.tableLayoutPanel1.SetColumnSpan(this.textBoxSearchFor, 4);
+			this.textBoxSearchFor.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxSearchFor.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBoxSearchFor.Location = new System.Drawing.Point(3, 3);
+			this.textBoxSearchFor.Name = "textBoxSearchFor";
+			this.textBoxSearchFor.Size = new System.Drawing.Size(778, 29);
+			this.textBoxSearchFor.TabIndex = 1;
+			this.textBoxSearchFor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox1KeyUp);
 			// 
 			// buttonIndex
 			// 
 			this.buttonIndex.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonIndex.Location = new System.Drawing.Point(3, 508);
 			this.buttonIndex.Name = "buttonIndex";
-			this.buttonIndex.Size = new System.Drawing.Size(71, 29);
+			this.buttonIndex.Size = new System.Drawing.Size(64, 29);
 			this.buttonIndex.TabIndex = 3;
 			this.buttonIndex.Text = "Index";
 			this.buttonIndex.UseVisualStyleBackColor = true;
@@ -116,7 +123,7 @@ namespace OceanPDFSearch
 			// 
 			// splitContainer1
 			// 
-			this.tableLayoutPanel1.SetColumnSpan(this.splitContainer1, 4);
+			this.tableLayoutPanel1.SetColumnSpan(this.splitContainer1, 5);
 			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.splitContainer1.Location = new System.Drawing.Point(3, 38);
 			this.splitContainer1.Name = "splitContainer1";
@@ -131,7 +138,7 @@ namespace OceanPDFSearch
 			this.splitContainer1.Panel2MinSize = 600;
 			this.splitContainer1.Size = new System.Drawing.Size(867, 464);
 			this.splitContainer1.SplitterDistance = 263;
-			this.splitContainer1.SplitterWidth = 20;
+			this.splitContainer1.SplitterWidth = 16;
 			this.splitContainer1.TabIndex = 5;
 			// 
 			// listBoxResults
@@ -159,13 +166,35 @@ namespace OceanPDFSearch
 			// buttonSelectPDFViewer
 			// 
 			this.buttonSelectPDFViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.buttonSelectPDFViewer.Location = new System.Drawing.Point(80, 508);
+			this.buttonSelectPDFViewer.Location = new System.Drawing.Point(73, 508);
 			this.buttonSelectPDFViewer.Name = "buttonSelectPDFViewer";
-			this.buttonSelectPDFViewer.Size = new System.Drawing.Size(227, 29);
+			this.buttonSelectPDFViewer.Size = new System.Drawing.Size(160, 29);
 			this.buttonSelectPDFViewer.TabIndex = 6;
 			this.buttonSelectPDFViewer.Text = "Select PDF Viewer";
 			this.buttonSelectPDFViewer.UseVisualStyleBackColor = true;
 			this.buttonSelectPDFViewer.Click += new System.EventHandler(this.ButtonSelectPDFViewerClick);
+			// 
+			// buttonClearHistory
+			// 
+			this.buttonClearHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonClearHistory.Location = new System.Drawing.Point(239, 508);
+			this.buttonClearHistory.Name = "buttonClearHistory";
+			this.buttonClearHistory.Size = new System.Drawing.Size(134, 29);
+			this.buttonClearHistory.TabIndex = 7;
+			this.buttonClearHistory.Text = "Clear History";
+			this.buttonClearHistory.UseVisualStyleBackColor = true;
+			this.buttonClearHistory.Click += new System.EventHandler(this.ButtonClearHistoryClick);
+			// 
+			// buttonWebsite
+			// 
+			this.buttonWebsite.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonWebsite.Location = new System.Drawing.Point(787, 508);
+			this.buttonWebsite.Name = "buttonWebsite";
+			this.buttonWebsite.Size = new System.Drawing.Size(83, 29);
+			this.buttonWebsite.TabIndex = 8;
+			this.buttonWebsite.Text = "Website";
+			this.buttonWebsite.UseVisualStyleBackColor = true;
+			this.buttonWebsite.Click += new System.EventHandler(this.ButtonWebsiteClick);
 			// 
 			// MainForm
 			// 

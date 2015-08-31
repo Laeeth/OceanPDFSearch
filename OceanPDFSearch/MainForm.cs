@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,9 +17,11 @@ namespace OceanPDFSearch
 {
 	public partial class MainForm : Form
 	{
-		private string pdfViewer = @"c:\Program Files\Tracker Software\PDF Editor\PDFXEdit.exe";
+		private string pdfViewer = string.Empty;
 		private string pdfViewerArguments = @"/A pagemode=none&view=FitH&search=""{1}"" ""{0}""";
 		private string workingDirectory = Environment.CurrentDirectory;
+		private List<string> history = new List<string>();
+		private int historyCursor = 0;
 		private object locking = new object();
 		private IndexWindow currentIndexWindow = null;
 		private bool indexingIsRunning = false;
@@ -50,11 +54,26 @@ namespace OceanPDFSearch
 			//
 			InitializeComponent();
 			
+			// Set the title:
 			this.Text = string.Format("Ocean PDF Search v{0}@{1}", Assembly.GetExecutingAssembly().getAppVersion(), Assembly.GetAssembly(OceanSearchManager.INSTANCE.GetType()).getAppVersion());
+			
+			// Normalize the working directory:
+			this.workingDirectory = this.workingDirectory.Last() == Path.DirectorySeparatorChar ? this.workingDirectory : this.workingDirectory + Path.DirectorySeparatorChar;
+			
+			// Setup the search library:
 			OceanSearchManager.INSTANCE.Setup(this.workingDirectory);
+			
+			// Re-set the splitter's width:
+			this.splitContainer1.SplitterWidth = 16;
 			
 			// Read the user's pdf viewer:
 			this.pdfViewer = global::OceanPDFSearch.Settings1.Default.PDFViewer.Trim();
+			
+			// Read the user's history:
+			var countHistoryEntries = global::OceanPDFSearch.Settings1.Default.History.Count;
+			var historyEntries = new string[countHistoryEntries];
+			global::OceanPDFSearch.Settings1.Default.History.CopyTo(historyEntries, 0);
+			this.history.AddRange(historyEntries);
 		}
 		
 		private void dock(string filename, string searchString)
@@ -142,15 +161,25 @@ namespace OceanPDFSearch
 			}
 		}
 		
-		void TextBox1KeyUp(object sender, KeyEventArgs e)
+		private void TextBox1KeyUp(object sender, KeyEventArgs e)
 		{
 			if(e.KeyCode == Keys.Enter)
 			{
 				this.ButtonSearchClick(sender, e);
 			}
+			
+			if(e.KeyCode == Keys.Up)
+			{
+				this.textBoxSearchFor.Text = this.history.Count > 0 ? Enumerable.Reverse(this.history).Skip(Math.Abs(this.historyCursor++) % this.history.Count).First() : string.Empty;
+			}
+			
+			if(e.KeyCode == Keys.Down)
+			{
+				this.textBoxSearchFor.Text = this.history.Count > 0 ? Enumerable.Reverse(this.history).Skip(Math.Abs(this.historyCursor--) % this.history.Count).First() : string.Empty;
+			}
 		}
 		
-		void ButtonSearchClick(object sender, EventArgs e)
+		private void ButtonSearchClick(object sender, EventArgs e)
 		{
 			lock(this.locking)
 			{
@@ -159,12 +188,14 @@ namespace OceanPDFSearch
 					return;
 				}
 				
-				var searchFor = this.textBox1.Text;
+				var searchFor = this.textBoxSearchFor.Text;
 				if(searchFor.Trim().Length == 0)
 				{
 					return;
 				}
 				
+				this.history.Add(this.textBoxSearchFor.Text);
+				this.historyCursor = 0;
 				this.isSearching = true;
 				this.searcher = Task.Run<string[]>(() => {
 	               	if(searchFor.Contains("|"))
@@ -243,13 +274,18 @@ namespace OceanPDFSearch
 			}
 			
 			this.listBoxResults.Items.Clear();
-			this.listBoxResults.Items.AddRange(this.searcher.Result);
+			var results = this.searcher.Result;
+			foreach(var item in results)
+			{
+				this.listBoxResults.Items.Add(item.Replace(this.workingDirectory, string.Empty));
+			}
+			
 			this.searcher.Dispose();
 			this.searcher = null;
 			this.isSearching = false;
 		}
 		
-		void ButtonIndexClick(object sender, EventArgs e)
+		private void ButtonIndexClick(object sender, EventArgs e)
 		{
 			lock(this.locking)
 			{
@@ -267,7 +303,7 @@ namespace OceanPDFSearch
 			}
 		}
 		
-		void indexingDone()
+		private void indexingDone()
 		{
 			this.indexingIsRunning = false;
 			this.currentIndexWindow.Close();
@@ -275,16 +311,16 @@ namespace OceanPDFSearch
 			this.currentIndexWindow = null;
 		}
 		
-		bool progressUpdate(byte directories, byte files, int dirNow, int dirTotal, int filesNow, int filesTotal)
+		private bool progressUpdate(byte directories, byte files, int dirNow, int dirTotal, int filesNow, int filesTotal)
 		{
 			this.currentIndexWindow.setProgress(directories, files, dirNow, dirTotal, filesNow, filesTotal);
 			return true;
 		}
 		
-		void ListBoxResultsSelectedValueChanged(object sender, EventArgs e)
+		private void ListBoxResultsSelectedValueChanged(object sender, EventArgs e)
 		{
 			var selectedFile = this.listBoxResults.SelectedItem as string;
-			var searchString = this.textBox1.Text;
+			var searchString = this.textBoxSearchFor.Text;
 			
 			if(this.dockedProcess != null)
 			{
@@ -336,7 +372,7 @@ namespace OceanPDFSearch
 			}
 		}
 		
-		void PanelTargetSizeChanged(object sender, EventArgs e)
+		private void PanelTargetSizeChanged(object sender, EventArgs e)
 		{
 			this.fitPDFIntoPanel();
 		}
@@ -356,13 +392,18 @@ namespace OceanPDFSearch
 			}
 		}
 		
-		void MainFormFormClosing(object sender, FormClosingEventArgs e)
+		private void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
+			// Save the history:
+			global::OceanPDFSearch.Settings1.Default.History.Clear();
+			global::OceanPDFSearch.Settings1.Default.History.AddRange(this.history.ToArray());
+			global::OceanPDFSearch.Settings1.Default.Save();
+			
 			// Close first the external process:
 			closeApp();
 		}
 		
-		void ButtonSelectPDFViewerClick(object sender, EventArgs e)
+		private void ButtonSelectPDFViewerClick(object sender, EventArgs e)
 		{
 			var open = new OpenFileDialog();
 			open.CheckFileExists = true;
@@ -379,6 +420,19 @@ namespace OceanPDFSearch
 				global::OceanPDFSearch.Settings1.Default.PDFViewer = open.FileName.Trim();
 				global::OceanPDFSearch.Settings1.Default.Save();
 			}
+		}
+		
+		private void ButtonClearHistoryClick(object sender, EventArgs e)
+		{
+			global::OceanPDFSearch.Settings1.Default.History.Clear();
+			global::OceanPDFSearch.Settings1.Default.Save();
+			this.historyCursor = 0;
+			this.history.Clear();
+		}
+		
+		private void ButtonWebsiteClick(object sender, EventArgs e)
+		{
+			Process.Start("https://github.com/SommerEngineering/OceanPDFSearch");
 		}
 	}
 }

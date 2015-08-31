@@ -26,6 +26,18 @@ namespace OceanPDFSearch {
 		[global::System.Configuration.UserScopedSettingAttribute()]
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.Configuration.DefaultSettingValueAttribute("")]
+		public global::System.Collections.Specialized.StringCollection History {
+			get {
+				return ((global::System.Collections.Specialized.StringCollection)(this["History"]));
+			}
+			set {
+				this["History"] = value;
+			}
+		}
+		
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("")]
 		public string PDFViewer {
 			get {
 				return ((string)(this["PDFViewer"]));
