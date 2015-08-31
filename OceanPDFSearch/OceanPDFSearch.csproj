@@ -8,9 +8,10 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>OceanPDFSearch</RootNamespace>
     <AssemblyName>OceanPDFSearch</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <NoWin32Manifest>False</NoWin32Manifest>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,7 +41,7 @@
       <HintPath>packages\NETools.1.0.9\lib\net45\NETools.dll</HintPath>
     </Reference>
     <Reference Include="OceanPDFSearchLib">
-      <HintPath>packages\OceanPDFSearchLib.1.1.6\lib\net45\OceanPDFSearchLib.dll</HintPath>
+      <HintPath>packages\OceanPDFSearchLib.1.4.1\lib\net45\OceanPDFSearchLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -71,10 +72,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings1.Designer.cs">
+      <DependentUpon>Settings1.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="IndexWindow.resx">
