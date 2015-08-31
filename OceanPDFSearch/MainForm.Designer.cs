@@ -94,7 +94,7 @@ namespace OceanPDFSearch
 			this.buttonSearch.Location = new System.Drawing.Point(787, 3);
 			this.buttonSearch.Name = "buttonSearch";
 			this.buttonSearch.Size = new System.Drawing.Size(83, 29);
-			this.buttonSearch.TabIndex = 0;
+			this.buttonSearch.TabIndex = 1;
 			this.buttonSearch.Text = "Search";
 			this.buttonSearch.UseVisualStyleBackColor = true;
 			this.buttonSearch.Click += new System.EventHandler(this.ButtonSearchClick);
@@ -107,7 +107,7 @@ namespace OceanPDFSearch
 			this.textBoxSearchFor.Location = new System.Drawing.Point(3, 3);
 			this.textBoxSearchFor.Name = "textBoxSearchFor";
 			this.textBoxSearchFor.Size = new System.Drawing.Size(778, 29);
-			this.textBoxSearchFor.TabIndex = 1;
+			this.textBoxSearchFor.TabIndex = 0;
 			this.textBoxSearchFor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox1KeyUp);
 			// 
 			// buttonIndex
@@ -117,6 +117,7 @@ namespace OceanPDFSearch
 			this.buttonIndex.Name = "buttonIndex";
 			this.buttonIndex.Size = new System.Drawing.Size(64, 29);
 			this.buttonIndex.TabIndex = 3;
+			this.buttonIndex.TabStop = false;
 			this.buttonIndex.Text = "Index";
 			this.buttonIndex.UseVisualStyleBackColor = true;
 			this.buttonIndex.Click += new System.EventHandler(this.ButtonIndexClick);
@@ -140,6 +141,7 @@ namespace OceanPDFSearch
 			this.splitContainer1.SplitterDistance = 263;
 			this.splitContainer1.SplitterWidth = 16;
 			this.splitContainer1.TabIndex = 5;
+			this.splitContainer1.TabStop = false;
 			// 
 			// listBoxResults
 			// 
@@ -150,7 +152,7 @@ namespace OceanPDFSearch
 			this.listBoxResults.Location = new System.Drawing.Point(0, 0);
 			this.listBoxResults.Name = "listBoxResults";
 			this.listBoxResults.Size = new System.Drawing.Size(263, 464);
-			this.listBoxResults.TabIndex = 3;
+			this.listBoxResults.TabIndex = 2;
 			this.listBoxResults.SelectedValueChanged += new System.EventHandler(this.ListBoxResultsSelectedValueChanged);
 			// 
 			// panelTarget
@@ -170,6 +172,7 @@ namespace OceanPDFSearch
 			this.buttonSelectPDFViewer.Name = "buttonSelectPDFViewer";
 			this.buttonSelectPDFViewer.Size = new System.Drawing.Size(160, 29);
 			this.buttonSelectPDFViewer.TabIndex = 6;
+			this.buttonSelectPDFViewer.TabStop = false;
 			this.buttonSelectPDFViewer.Text = "Select PDF Viewer";
 			this.buttonSelectPDFViewer.UseVisualStyleBackColor = true;
 			this.buttonSelectPDFViewer.Click += new System.EventHandler(this.ButtonSelectPDFViewerClick);
@@ -181,6 +184,7 @@ namespace OceanPDFSearch
 			this.buttonClearHistory.Name = "buttonClearHistory";
 			this.buttonClearHistory.Size = new System.Drawing.Size(134, 29);
 			this.buttonClearHistory.TabIndex = 7;
+			this.buttonClearHistory.TabStop = false;
 			this.buttonClearHistory.Text = "Clear History";
 			this.buttonClearHistory.UseVisualStyleBackColor = true;
 			this.buttonClearHistory.Click += new System.EventHandler(this.ButtonClearHistoryClick);
@@ -192,6 +196,7 @@ namespace OceanPDFSearch
 			this.buttonWebsite.Name = "buttonWebsite";
 			this.buttonWebsite.Size = new System.Drawing.Size(83, 29);
 			this.buttonWebsite.TabIndex = 8;
+			this.buttonWebsite.TabStop = false;
 			this.buttonWebsite.Text = "Website";
 			this.buttonWebsite.UseVisualStyleBackColor = true;
 			this.buttonWebsite.Click += new System.EventHandler(this.ButtonWebsiteClick);
