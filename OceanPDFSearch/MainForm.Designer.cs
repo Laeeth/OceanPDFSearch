@@ -24,6 +24,7 @@ namespace OceanPDFSearch
 		private System.Windows.Forms.Button buttonSelectPDFViewer;
 		private System.Windows.Forms.Button buttonClearHistory;
 		private System.Windows.Forms.Button buttonWebsite;
+		private System.Windows.Forms.Button buttonChangePDFMode;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -56,6 +57,7 @@ namespace OceanPDFSearch
 			this.buttonSelectPDFViewer = new System.Windows.Forms.Button();
 			this.buttonClearHistory = new System.Windows.Forms.Button();
 			this.buttonWebsite = new System.Windows.Forms.Button();
+			this.buttonChangePDFMode = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -65,19 +67,21 @@ namespace OceanPDFSearch
 			// 
 			// tableLayoutPanel1
 			// 
-			this.tableLayoutPanel1.ColumnCount = 5;
+			this.tableLayoutPanel1.ColumnCount = 6;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
-			this.tableLayoutPanel1.Controls.Add(this.buttonSearch, 4, 0);
+			this.tableLayoutPanel1.Controls.Add(this.buttonSearch, 5, 0);
 			this.tableLayoutPanel1.Controls.Add(this.textBoxSearchFor, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.buttonIndex, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.buttonSelectPDFViewer, 1, 2);
 			this.tableLayoutPanel1.Controls.Add(this.buttonClearHistory, 2, 2);
-			this.tableLayoutPanel1.Controls.Add(this.buttonWebsite, 4, 2);
+			this.tableLayoutPanel1.Controls.Add(this.buttonWebsite, 5, 2);
+			this.tableLayoutPanel1.Controls.Add(this.buttonChangePDFMode, 3, 2);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -101,7 +105,7 @@ namespace OceanPDFSearch
 			// 
 			// textBoxSearchFor
 			// 
-			this.tableLayoutPanel1.SetColumnSpan(this.textBoxSearchFor, 4);
+			this.tableLayoutPanel1.SetColumnSpan(this.textBoxSearchFor, 5);
 			this.textBoxSearchFor.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.textBoxSearchFor.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBoxSearchFor.Location = new System.Drawing.Point(3, 3);
@@ -124,7 +128,7 @@ namespace OceanPDFSearch
 			// 
 			// splitContainer1
 			// 
-			this.tableLayoutPanel1.SetColumnSpan(this.splitContainer1, 5);
+			this.tableLayoutPanel1.SetColumnSpan(this.splitContainer1, 6);
 			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.splitContainer1.Location = new System.Drawing.Point(3, 38);
 			this.splitContainer1.Name = "splitContainer1";
@@ -200,6 +204,17 @@ namespace OceanPDFSearch
 			this.buttonWebsite.Text = "Website";
 			this.buttonWebsite.UseVisualStyleBackColor = true;
 			this.buttonWebsite.Click += new System.EventHandler(this.ButtonWebsiteClick);
+			// 
+			// buttonChangePDFMode
+			// 
+			this.buttonChangePDFMode.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonChangePDFMode.Location = new System.Drawing.Point(379, 508);
+			this.buttonChangePDFMode.Name = "buttonChangePDFMode";
+			this.buttonChangePDFMode.Size = new System.Drawing.Size(160, 29);
+			this.buttonChangePDFMode.TabIndex = 9;
+			this.buttonChangePDFMode.Text = "Embedded PDFs";
+			this.buttonChangePDFMode.UseVisualStyleBackColor = true;
+			this.buttonChangePDFMode.Click += new System.EventHandler(this.ButtonChangePDFModeClick);
 			// 
 			// MainForm
 			// 

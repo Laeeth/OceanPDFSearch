@@ -17,6 +17,7 @@ namespace OceanPDFSearch
 {
 	public partial class MainForm : Form
 	{
+		private bool useEmbeddedPDFMode = true;
 		private string pdfViewer = string.Empty;
 		private string pdfViewerArguments = @"/A pagemode=none&view=FitH&search=""{1}"" ""{0}""";
 		private string workingDirectory = Environment.CurrentDirectory;
@@ -117,8 +118,15 @@ namespace OceanPDFSearch
 		// Start the next selected app:
 		private void startApp(string filename, string searchString)
 		{
-			// Start & dock the next app:
-			this.dock(filename, searchString);
+			if(this.useEmbeddedPDFMode)
+			{
+				// Start & dock the next app:
+				this.dock(filename, searchString);
+			}
+			else
+			{
+				this.dockedProcess = Process.Start(this.pdfViewer, string.Format(this.pdfViewerArguments, filename, searchString));
+			}
 		}
 		
 		// Close an app before closing the main program:
@@ -332,7 +340,10 @@ namespace OceanPDFSearch
 		         	
 				    try
 				    {
-						PostMessage(this.dockedHandle, WM_CLOSE, 0, 0);
+				    	if(this.dockedHandle != IntPtr.Zero)
+				    	{
+							PostMessage(this.dockedHandle, WM_CLOSE, 0, 0);
+				    	}
 				    }
 				    catch
 				    {
@@ -433,6 +444,19 @@ namespace OceanPDFSearch
 		private void ButtonWebsiteClick(object sender, EventArgs e)
 		{
 			Process.Start("https://github.com/SommerEngineering/OceanPDFSearch");
+		}
+		
+		private void ButtonChangePDFModeClick(object sender, EventArgs e)
+		{
+			this.useEmbeddedPDFMode = !this.useEmbeddedPDFMode;
+			if(this.useEmbeddedPDFMode)
+			{
+				this.buttonChangePDFMode.Text = "Embedded PDFs";
+			}
+			else
+			{
+				this.buttonChangePDFMode.Text = "External PDFs";
+			}
 		}
 	}
 }

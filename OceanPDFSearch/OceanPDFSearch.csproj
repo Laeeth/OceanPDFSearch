@@ -41,7 +41,7 @@
       <HintPath>packages\NETools.1.0.9\lib\net45\NETools.dll</HintPath>
     </Reference>
     <Reference Include="OceanPDFSearchLib">
-      <HintPath>packages\OceanPDFSearchLib.1.4.1\lib\net45\OceanPDFSearchLib.dll</HintPath>
+      <HintPath>packages\OceanPDFSearchLib.1.4.5\lib\net45\OceanPDFSearchLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
