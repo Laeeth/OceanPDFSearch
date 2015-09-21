@@ -34,3 +34,6 @@ If you delete, add or change a PDF file, you should maintain the index by clicki
 - Click on "Select PDF Viewer" and select your PDF application. Ocean PDF Search was tested successful with Tracker Software's [PDF-XChange Viewer](http://www.tracker-software.com/product/pdf-xchange-viewer) and the [PDF-XChange Editor](http://www.tracker-software.com/product/pdf-xchange-editor).
 - Click on "Index" to build your PDF index. This can take several hours for huge collections!
 - While the indexing process is running, you can query the already known documents
+
+## 4. License
+The Ocean PDF Search source code is available as 2-clause BSD license. Ocean PDF Search use the [xpdf](http://www.foolabs.com/xpdf/home.html) binary utility pdftotext. xpdf use the [GNU General Public License v2](http://www.foolabs.com/xpdf/about.html). Finally, also the [ude library](https://code.google.com/p/ude/) is used. ude is available as Mozilla Public License Version 1.1. Thanks very much to these projects.
