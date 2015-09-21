@@ -10,7 +10,8 @@ namespace OceanPDFSearch
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new StartingWindow());
+			new StartingWindow();
+			Application.Run();
 		}
 		
 	}

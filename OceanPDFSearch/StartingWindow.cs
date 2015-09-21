@@ -22,6 +22,7 @@ namespace OceanPDFSearch
 				{
 					this.Close();
 					this.Dispose();
+					Application.Exit();
 					return;
 				}
 				else
