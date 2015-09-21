@@ -36,4 +36,4 @@ If you delete, add or change a PDF file, you should maintain the index by clicki
 - While the indexing process is running, you can query the already known documents
 
 ## 4. License
-The Ocean PDF Search source code is available as 2-clause BSD license. Ocean PDF Search use the [xpdf](http://www.foolabs.com/xpdf/home.html) binary utility pdftotext. xpdf use the [GNU General Public License v2](http://www.foolabs.com/xpdf/about.html). Finally, also the [ude library](https://code.google.com/p/ude/) is used. ude is available as Mozilla Public License Version 1.1. Thanks very much to these projects.
+The Ocean PDF Search source code is available as [2-clause BSD license](https://github.com/SommerEngineering/OceanPDFSearch/blob/master/LICENSE). Ocean PDF Search use the [xpdf](http://www.foolabs.com/xpdf/home.html) binary utility pdftotext. xpdf use the [GNU General Public License v2](http://www.foolabs.com/xpdf/about.html). Finally, also the [ude library](https://code.google.com/p/ude/) is used. ude is available as Mozilla Public License Version 1.1. Thanks very much to these projects.
